@@ -214,7 +214,12 @@ const Notification = ({ message, type }) => {
 
 export default function WarehouseQcApp() {
   const [userRole, setUserRole] = useState(null);
-  const [products, setProducts] = useState(initialProducts);
+  
+  // Load products from localStorage or use initial data
+  const [products, setProducts] = useState(() => {
+    const savedProducts = localStorage.getItem('warehouse-products');
+    return savedProducts ? JSON.parse(savedProducts) : initialProducts;
+  });
   const [newProductName, setNewProductName] = useState('');
   const [newProductQty, setNewProductQty] = useState(1);
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
@@ -223,6 +228,11 @@ export default function WarehouseQcApp() {
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [productToDelete, setProductToDelete] = useState(null);
   const [notification, setNotification] = useState(null);
+
+  // Save products to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('warehouse-products', JSON.stringify(products));
+  }, [products]);
 
   const showNotification = (message, type) => {
     setNotification({ message, type });
