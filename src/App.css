@@ -2,37 +2,265 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* Fix text overlapping issues */
+.container {
+  font-family: 'Arial, sans-serif';
+  background-color: #f0f2f5;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-container {
+  width: 100%;
+  max-width: 900px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.header-title {
+  color: #1890ff;
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.button {
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 5px;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #40a9ff;
+}
+
+.logout-button {
+  background-color: #ff4d4f;
+}
+
+.logout-button:hover {
+  background-color: #ff7875;
+}
+
+.product-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-info {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.product-info strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.status-approved {
+  background-color: #52c41a;
+}
+
+.status-hold {
+  background-color: #faad14;
+}
+
+.status-pending {
+  background-color: #d9d9d9;
+  color: #595959;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.control-button {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: opacity 0.3s;
+}
+
+.control-button:hover {
+  opacity: 0.8;
+}
+
+.approve-button {
+  background-color: #52c41a;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.hold-button {
+  background-color: #faad14;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.delete-button {
+  background-color: #ff4d4f;
+  color: white;
+}
+
+.form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.input {
+  border: 1px solid #d9d9d9;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  flex: 1;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 300px;
+  z-index: 1001;
+}
+
+.modal-title {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.modal-input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000;
+}
+
+.notification {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  opacity: 0.9;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.notification-success {
+  background-color: #52c41a;
+}
+
+.notification-error {
+  background-color: #ff4d4f;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 10px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .form {
+    flex-direction: column;
+  }
+  
+  .product-card {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .controls {
+    justify-content: center;
   }
 }
